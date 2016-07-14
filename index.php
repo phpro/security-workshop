@@ -1,9 +1,7 @@
 <?php
-// include db connection variables
 include('config/dbcon.php');
 
 try {
-  // set up db connection
   $dbh = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $username, $password);
   $sql = 'SELECT imageURL FROM hackmeContest.images ORDER BY id DESC LIMIT 1';
   $q = $dbh->query($sql);
