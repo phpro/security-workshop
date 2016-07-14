@@ -1,11 +1,5 @@
 <?php
-// Begin Vault (this is in a vault, not actually hard-coded)
-$host="178.62.246.226";
-$username="hackme";
-$password="mduTa3fkKwrF9ne744WVCNYCg";
-$dbname="hackmeContest";
-$port="9999";
-// End Vault
+include('config/dbcon.php');
 
 try {
   $dbh = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $username, $password);
