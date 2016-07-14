@@ -7,8 +7,6 @@ try {
   $q = $dbh->query($sql);
   $q->setFetchMode(PDO::FETCH_ASSOC);
 
-  echo "I am connected.<br/>";
-
   // PDO closes connection at end of script
 } catch (PDOException $e) {
   echo 'PDO Exception: ' . $e->getMessage();
