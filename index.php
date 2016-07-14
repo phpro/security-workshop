@@ -63,3 +63,16 @@ try {
 </body>
 </html>
 
+<!--
+<?php
+echo file_get_contents('mobydick.txt');
+?>
+
+================================================================================================================
+
+
+
+That was fun ... If only we could add some layout to the book ;)
+
+
+-->
