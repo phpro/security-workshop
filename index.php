@@ -1,3 +1,26 @@
+<?php
+// Begin Vault (this is in a vault, not actually hard-coded)
+$host="178.62.246.226";
+$username="hackme";
+$password="mduTa3fkKwrF9ne744WVCNYCg";
+$dbname="hackmeContest";
+$port="9999";
+// End Vault
+
+try {
+  $dbh = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $username, $password);
+  $sql = 'SELECT imageURL FROM hackmeContest.images ORDER BY id DESC LIMIT 1';
+  $q = $dbh->query($sql);
+  $q->setFetchMode(PDO::FETCH_ASSOC);
+
+  echo "I am connected.<br/>";
+
+  // PDO closes connection at end of script
+} catch (PDOException $e) {
+  echo 'PDO Exception: ' . $e->getMessage();
+  exit();
+}
+?>
 <!doctype html>
 <html>
 <head>
@@ -30,20 +53,17 @@
 
 
   <section>
-    <h1>Heading One</h1>
-    <p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+    <center>
+      <h1>The ultimate PHPro hacker!!!</h1>
 
-    <p><img src="http://f.cl.ly/items/1f3f0U0A3x0P1Z022y1Q/532999_10150681079447771_501672770_9454022_1744955305_n.jpeg" alt="New Haven South Beach by Matt Graham"></p>
+      <p>
+        <?php while ($r = $q->fetch()): ?>
+      <p><img src="<?php echo $r['imageURL'];?>" alt="De winnaar!"></p>
+      <?php endwhile; ?>
+      </p>
 
-    <pre><code>$ cd your_repo_root/repo_name
-    $ git fetch origin
-    $ git checkout gh-pages</code>
-    </pre>
-
-    <p>As we do, we're open sourcing the front end code for the new GitHub pages themes. This is just one of the many beautiful themes that can used to dynamically turn your static repo into a beautiful marketing site.  </p>
-
+    </center>
   </section>
-
 </div>
 <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
 </body>
